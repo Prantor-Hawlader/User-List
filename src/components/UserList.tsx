@@ -68,48 +68,47 @@ const UserList = () => {
   };
   return (
     <div className="pt-10">
-      <div className="flex items-center justify-center mx-36">
-        <div className="flex justify-around">
-          <div className="relative w-60 mr-6">
-            <select
-              onChange={handleSortOrder}
-              className="py-3 px-4 pe-16   w-full border rounded-lg  bg-black border-indigo-600 placeholder-white-500 text-white"
+      <div className="flex items-center justify-center flex-col lg:flex-row ">
+        <div className="relative w-60 lg:mr-6 mt-4">
+          <select
+            onChange={handleSortOrder}
+            className="py-3 px-4 pe-16   w-full border rounded-lg  bg-black border-indigo-600 placeholder-white-500 text-white"
+          >
+            <option value="" disabled selected hidden>
+              Sort by
+            </option>
+            <option value="email">Sort by Email</option>
+            <option value="name">Sort by Name</option>
+            <option value="company">Sort by Company</option>
+          </select>
+          <div className="absolute inset-y-0 end-0 flex items-center pointer-events-none pe-8">
+            <svg
+              className="flex-shrink-0 h-4 w-4 text-teal-500"
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
             >
-              <option value="" disabled selected hidden>
-                Sort by
-              </option>
-              <option value="email">Sort by Email</option>
-              <option value="name">Sort by Name</option>
-              <option value="company">Sort by Company</option>
-            </select>
-            <div className="absolute inset-y-0 end-0 flex items-center pointer-events-none pe-8">
-              <svg
-                className="flex-shrink-0 h-4 w-4 text-teal-500"
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <polyline points="20 6 9 17 4 12" />
-              </svg>
-            </div>
+              <polyline points="20 6 9 17 4 12" />
+            </svg>
           </div>
         </div>
+
         <input
           type="text"
           placeholder="Search by name"
           value={searchPhrase}
           onChange={handleSearch}
-          className="w-60 border rounded-lg py-3 px-3 bg-black border-indigo-600 placeholder-white-500 text-white"
+          className="w-60 border rounded-lg py-3 px-3 mt-4 bg-black border-indigo-600 placeholder-white-500 text-white"
         />
       </div>
       <div className="flex items-center justify-center mt-20">
-        <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3">
+        <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
           {users?.map((user) => (
             <Card user={user} />
           ))}
