@@ -14,7 +14,7 @@ interface User {
 
 const UserList = () => {
   const [users, setUsers] = useState<User[]>([]);
-  const [filterData, setFilterData] = useState<User[] | []>([]);
+  const [remainingData, setRemainingData] = useState<User[]>([]);
   const [searchPhrase, setSearchPhrase] = useState("");
 
   useEffect(() => {
@@ -25,7 +25,7 @@ const UserList = () => {
         const usersData: User[] = await data.users;
 
         setUsers(usersData);
-        setFilterData(usersData);
+        setRemainingData(usersData);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -61,7 +61,7 @@ const UserList = () => {
 
       setUsers(matchedUsers);
     } else {
-      setUsers(filterData);
+      setUsers(remainingData);
     }
 
     setSearchPhrase(event.target.value);
@@ -75,10 +75,11 @@ const UserList = () => {
               onChange={handleSortOrder}
               className="py-3 px-4 pe-16   w-full border rounded-lg  bg-black border-indigo-600 placeholder-white-500 text-white"
             >
-              <option value="email">Sort by Email</option>
-              <option value="name" selected>
-                Sort by Name
+              <option value="" disabled selected hidden>
+                Sort by
               </option>
+              <option value="email">Sort by Email</option>
+              <option value="name">Sort by Name</option>
               <option value="company">Sort by Company</option>
             </select>
             <div className="absolute inset-y-0 end-0 flex items-center pointer-events-none pe-8">
@@ -108,7 +109,7 @@ const UserList = () => {
         ></input>
       </div>
       <div className="flex items-center justify-center mt-20">
-        <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3">
+        <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3">
           {users?.map((user) => (
             <Card user={user} />
           ))}

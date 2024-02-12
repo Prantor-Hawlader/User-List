@@ -33,7 +33,7 @@ const UserPage = () => {
 
   return (
     <div className="pt-10 flex items-center justify-center  pb-10 bg-slate-950 h-screen">
-      <div className=" w-96 px-6 py-6   bg-gray-800 rounded-lg xl:px-10">
+      <div className=" w-2/4 px-6 py-6 border border-indigo-600    bg-gray-800 rounded-lg xl:px-10">
         <div className="space-y-4 xl:space-y-6">
           <img
             className="mx-auto rounded-full h-36 w-36"
@@ -44,8 +44,8 @@ const UserPage = () => {
             <div className="flex items-center flex-col space-y-3 text-lg font-medium leading-6">
               <div className="flex-col">
                 {user.address && (
-                  <div className="mt-2  text-green-400  ">
-                    <h1 className="text-white text-center font-mono text-3xl mb-4">
+                  <div className="mt-2 text-green-400  font-mono">
+                    <h1 className="text-indigo-600 text-center text-3xl mb-4">
                       {user.firstName} {user.lastName}
                     </h1>
                     <div className="font-light">
