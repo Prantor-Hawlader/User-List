@@ -4,10 +4,9 @@ interface NewUser {
   firstName: string;
   lastName: string;
   email: string;
-  avatar: string;
+  image: string;
   address: string;
   company: string;
-  // Add other user data properties here
 }
 
 function UserForm() {
@@ -16,10 +15,9 @@ function UserForm() {
     firstName: "",
     lastName: "",
     email: "",
-    avatar: "",
+    image: "",
     address: "",
     company: "",
-    // Add other user data properties here
   });
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -42,15 +40,20 @@ function UserForm() {
 
       const data = await response.json();
       setNewUser(data);
-      console.log(data);
     } catch (error) {
       console.error("Error submitting form:", error);
     }
   };
 
   return (
-    <div className="flex items-center justify-center ">
+    <div className="flex items-center justify-center mt-10">
       <div className="bg-black flex flex-col w-80 border border-gray-900 rounded-lg px-8 py-10">
+        <p
+          className="text-center pb-2 text-3xl  font-bold text-green-500 bg-gradient-to-r from-green-300 via-blue-500 to-purple-600
+          bg-[length:100%_6px] bg-no-repeat bg-bottom"
+        >
+          Add a user
+        </p>
         <form onSubmit={handleSubmit} className="flex flex-col space-y-4 mt-4">
           <label className="font-bold text-lg text-white ">First Name</label>
           <input
@@ -81,10 +84,10 @@ function UserForm() {
           />
           <label className="font-bold text-lg text-white ">Avatar</label>
           <input
-            type="avatar"
-            name="avatar"
+            type="text"
+            name="image"
             onChange={handleChange}
-            value={formData.avatar}
+            value={formData.image}
             placeholder="avatar link"
             className="border rounded-lg py-3 px-3 mt-4 bg-black border-indigo-600 placeholder-white-500 text-white"
           />
@@ -108,12 +111,33 @@ function UserForm() {
           />
           <button
             type="submit"
-            className="border border-indigo-600 bg-black text-white rounded-lg py-3 font-semibold"
+            className="border hover:bg-gradient-to-r from-green-300 via-blue-500 to-purple-600 border-indigo-600 bg-black text-white rounded-lg py-3 font-semibold"
           >
             Add User
           </button>
         </form>
       </div>
+
+      {newUser && (
+        <div className="ml-8 relative isolate aspect-video bg-zinc-300 py-6 px-6 rounded-xl ring-1 ring-white/5 backdrop-blur-3xl w-80 my-4 shadow-lg">
+          <span className="absolute inset-x-0 bottom-0 h-2 bg-gradient-to-r from-green-300 via-blue-500 to-purple-600"></span>
+          <div
+            className=" text-white bg-indigo-400 flex items-center  absolute rounded-full py-4 px-4
+               shadow-xl left-32 -top-6"
+          >
+            {/* Avatar  */}
+            <img src={newUser.image} width={40} height={40} />
+          </div>
+          <div className="mt-8 text-xl font-semibold my-2 text-center font-mono">
+            {newUser.firstName} {newUser.lastName}
+            <div className="mt-2 space-x-2 text-slate-700 text-sm  font-thin">
+              <div>Email: {newUser.email}</div>
+              <div>Address : {newUser.address}</div>
+              <div> Company Name : {newUser.company}</div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
