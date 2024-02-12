@@ -68,7 +68,7 @@ const UserList = () => {
   };
   return (
     <div className="pt-10">
-      <div className="flex items-center justify-center">
+      <div className="flex items-center justify-center mx-36">
         <div className="flex justify-around">
           <div className="relative w-60 mr-6">
             <select
@@ -106,7 +106,7 @@ const UserList = () => {
           value={searchPhrase}
           onChange={handleSearch}
           className="w-60 border rounded-lg py-3 px-3 bg-black border-indigo-600 placeholder-white-500 text-white"
-        ></input>
+        />
       </div>
       <div className="flex items-center justify-center mt-20">
         <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3">
