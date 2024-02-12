@@ -32,7 +32,7 @@ const UserPage = () => {
   }, [id]);
 
   return (
-    <div className="mt-10 flex items-center justify-center">
+    <div className="pt-10 flex items-center justify-center  pb-10 bg-slate-950 h-screen">
       <div className=" w-96 px-6 py-6   bg-gray-800 rounded-lg xl:px-10">
         <div className="space-y-4 xl:space-y-6">
           <img
@@ -42,27 +42,19 @@ const UserPage = () => {
           />
           <div className="space-y-2">
             <div className="flex items-center flex-col space-y-3 text-lg font-medium leading-6">
-              <h1 className="text-white text-center text-3xl">
-                {user.firstName} {user.lastName}
-              </h1>
-
               <div className="flex-col">
-                <p className="mt-1 text-indigo-300 ">Email : {user.email}</p>
-
                 {user.address && (
-                  <p className="mt-1 text-indigo-300 ">
-                    Address : {user.address.address}
-                  </p>
-                )}
-                {user.address && (
-                  <p className="mt-1 text-indigo-300 ">
-                    City : {user.address.city}
-                  </p>
-                )}
-                {user.company && (
-                  <p className="mt-1 text-indigo-300 ">
-                    Company : {user.company.name}
-                  </p>
+                  <div className="mt-2  text-green-400  ">
+                    <h1 className="text-white text-center font-mono text-3xl mb-4">
+                      {user.firstName} {user.lastName}
+                    </h1>
+                    <div className="font-light">
+                      <div>Email : {user.email}</div>
+                      <div>Address : {user.address.address}</div>
+                      <div>City : {user.address.city}</div>
+                      <div>Company Name : {user.company.name}</div>
+                    </div>
+                  </div>
                 )}
               </div>
             </div>
