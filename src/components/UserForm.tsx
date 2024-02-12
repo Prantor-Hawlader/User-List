@@ -1,23 +1,24 @@
 import { useState, ChangeEvent, FormEvent } from "react";
 
-interface FormData {
-  firstName: string;
-  lastName: string;
-  email: string;
-  // Add other user data properties here
-}
-
 interface NewUser {
   firstName: string;
   lastName: string;
+  email: string;
+  avatar: string;
+  address: string;
+  company: string;
+  // Add other user data properties here
 }
 
 function UserForm() {
   const [newUser, setNewUser] = useState<NewUser>(Object);
-  const [formData, setFormData] = useState<FormData>({
+  const [formData, setFormData] = useState<NewUser>({
     firstName: "",
     lastName: "",
     email: "",
+    avatar: "",
+    address: "",
+    company: "",
     // Add other user data properties here
   });
 
@@ -49,9 +50,8 @@ function UserForm() {
 
   return (
     <div className="flex items-center justify-center ">
-      <p className="text-purple-700 text-3xl">{newUser.firstName}</p>
       <div className="bg-black flex flex-col w-80 border border-gray-900 rounded-lg px-8 py-10">
-        <form onSubmit={handleSubmit} className="flex flex-col space-y-8 mt-10">
+        <form onSubmit={handleSubmit} className="flex flex-col space-y-4 mt-4">
           <label className="font-bold text-lg text-white ">First Name</label>
           <input
             onChange={handleChange}
@@ -59,7 +59,7 @@ function UserForm() {
             name="firstName"
             value={formData.firstName}
             placeholder="first name"
-            className="border rounded-lg py-3 px-3 mt-4 bg-black border-indigo-600 placeholder-white-500 text-white"
+            className="border rounded-lg py-3 px-3 mt-4  bg-black border-indigo-600 placeholder-white-500 text-white"
           />
           <label className="font-bold text-lg text-white">Last Name</label>
           <input
@@ -79,11 +79,38 @@ function UserForm() {
             placeholder="email"
             className="border rounded-lg py-3 px-3 mt-4 bg-black border-indigo-600 placeholder-white-500 text-white"
           />
+          <label className="font-bold text-lg text-white ">Avatar</label>
+          <input
+            type="avatar"
+            name="avatar"
+            onChange={handleChange}
+            value={formData.avatar}
+            placeholder="avatar link"
+            className="border rounded-lg py-3 px-3 mt-4 bg-black border-indigo-600 placeholder-white-500 text-white"
+          />
+          <label className="font-bold text-lg text-white ">Address</label>
+          <input
+            type="address"
+            name="address"
+            onChange={handleChange}
+            value={formData.address}
+            placeholder="address"
+            className="border rounded-lg py-3 px-3 mt-4 bg-black border-indigo-600 placeholder-white-500 text-white"
+          />
+          <label className="font-bold text-lg text-white ">Company Name</label>
+          <input
+            type="company"
+            name="company"
+            onChange={handleChange}
+            value={formData.company}
+            placeholder="company name"
+            className="border rounded-lg py-3 px-3 mt-4 bg-black border-indigo-600 placeholder-white-500 text-white"
+          />
           <button
             type="submit"
             className="border border-indigo-600 bg-black text-white rounded-lg py-3 font-semibold"
           >
-            Create Account
+            Add User
           </button>
         </form>
       </div>

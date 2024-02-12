@@ -70,10 +70,10 @@ const Card = () => {
     <div className="pt-10">
       <div className="flex items-center justify-center">
         <div className="flex justify-around">
-          <div className="relative w-60">
+          <div className="relative w-60 mr-6">
             <select
               onChange={handleSortOrder}
-              className="py-3 px-4 pe-16  w-full border-teal-500 rounded-lg text-sm focus:border-teal-500 focus:ring-teal-500 disabled:opacity-50 disabled:pointer-events-none"
+              className="py-3 px-4 pe-16   w-full border rounded-lg  bg-black border-indigo-600 placeholder-white-500 text-white"
             >
               <option value="email">Sort by Email</option>
               <option value="name" selected>
@@ -104,7 +104,7 @@ const Card = () => {
           placeholder="Search by name"
           value={searchPhrase}
           onChange={handleSearch}
-          className="w-60 py-3 px-4 block  border-green-400 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 ml-10"
+          className="w-60 border rounded-lg py-3 px-3 bg-black border-indigo-600 placeholder-white-500 text-white"
         ></input>
       </div>
       <div className="flex items-center justify-center mt-20">
@@ -125,18 +125,12 @@ const Card = () => {
                   </Link>
                 </p>
                 <div className="flex space-x-2 text-gray-400 text-sm">
-                  {/* icon  */}
-
                   <p>Email: {user.email}</p>
                 </div>
                 <div className="flex space-x-2 text-gray-400 text-sm my-3">
-                  {/* icon 2 */}
-
                   <p>Address : {user.address.address}</p>
                 </div>
                 <div className="flex space-x-2 text-gray-400 text-sm my-3">
-                  {/* icon 2 */}
-
                   <p>Company : {user.company.name}</p>
                 </div>
                 <div className="border-t-2"></div>
